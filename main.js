@@ -20,3 +20,34 @@ function tekshir(){
 
     })
 }
+
+
+fetch('https://jsonplaceholder.typicode.com/photos')
+    .then(response => response.json())
+    .then(json => {
+          for(var i=0; i < 4; i++)
+          {
+            var div_product = document.getElementById('div_product');
+
+            var div = document.createElement('div');
+            var div1 = document.createElement('div');
+            var img = document.createElement('img');
+            var p = document.createElement('p');
+            p.innerText = json[i].title;
+            img.setAttribute('src', json[i].url);
+            img.style.width = "100%";
+            div.style.width = "23%"
+            div.style.height = "70vh"
+            div.style.backgroundColor = "green";
+
+            div1.style.width = "100%"
+            div1.style.height = "35vh"
+            div1.style.backgroundColor = "red";
+          
+            div1.appendChild(img);
+            div.appendChild(div1);
+            div.appendChild(p);
+            div_product.appendChild(div);
+
+          }
+    });
